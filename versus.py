@@ -92,57 +92,27 @@ def ql_vs_alpha_random():
     with open('dump/ql_vs_alpha_random_%s.pkl' % sdate(), mode='wb') as f:
         pickle.dump(p1, f)
 
-    # pQ.e = 0
-    # p2 = PlayerAlphaRandom(PLAYER_X)
-    # game = GameOrganizer(pQ, p2, 1000, False, False, 100)
-    # game.progress()
-#
-#
-# def mc_vs_ql():
-#     pQ = PlayerQL(PLAYER_O, "QL1")
-#     p2 = PlayerQL(PLAYER_X, "QL2")
-#     game = TTT_GameOrganizer(pQ, p2, 100000, False, False, 10000)
-#     game.progress()
-#
-#     pQ.e = 0
-#     p2 = PlayerMC(PLAYER_X, "M1")
-#     game = TTT_GameOrganizer(pQ, p2, 100, False, False, 10)
-#     game.progress()
-#
-#
 
 def human_vs_dumped():
-    p1 = PlayerHuman(PLAYER_X)
-    with open('dump/pQ.pkl', mode='rb') as f:
+    p1 = PlayerHuman(PLAYER_O)
+    with open('dump/ql_vs_alpha_random_2017_05_19_17_42_46.pkl', mode='rb') as f:
         p2 = pickle.load(f)
 
     p2.e = 0
     game = GameOrganizer(p1, p2)
     game.progress()
 
-        # def dqn_vs_alpha_random():
-#     pDQ=DQNPlayer(PLAYER_X)
-#     p2=PlayerAlphaRandom(PLAYER_O)
-#     game=TTT_GameOrganizer(pDQ,p2,20000,False,False,1000)
-#     game.progress()
-#
-#
-# def dqn_vs_ql():
-#     pQ = PlayerQL(PLAYER_O, "QL1")
-#     p2 = PlayerQL(PLAYER_X, "QL2")
-#     game = TTT_GameOrganizer(pQ, p2, 100000, False, False, 10000)
-#     game.progress()
-#
-#     pDQ = DQNPlayer(PLAYER_X)
-#     p2 = PlayerAlphaRandom(PLAYER_O)
-#     game = TTT_GameOrganizer(pDQ, p2, 20000, False, False, 1000)
-#     game.progress()
-#
-#     pQ.e = 0
-#     pDQ.e = 1
-#
-#     game = TTT_GameOrganizer(pDQ, pQ, 30000, False, False, 1000)
-#     game.progress()
+
+def mc_vs_dumped():
+    p1 = PlayerMC(PLAYER_O, 'M1')
+    # with open('dump/ql_vs_alpha_random_2017_05_19_17_42_46.pkl', mode='rb') as f:
+    with open('dump/ql_vs_ql_2017_05_19_18_35_32.pkl', mode='rb') as f:
+        p2 = pickle.load(f)
+
+    p2.e = 0
+    game = GameOrganizer(p1, p2, 10, False)
+    game.progress()
+
 
 def sdate():
     return datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
