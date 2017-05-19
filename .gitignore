@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+.python-version
+
+__pycache__
+*.pyc
+dump/*
+!.keep
